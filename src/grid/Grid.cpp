@@ -31,7 +31,7 @@ void Grid::GridData::randomize_grid() {
     clear_grid();
     for(int i = 0; i < m_elements->size(); i++) {
         for(int j = 0; j < m_elements->at(i).size(); j++) {
-            if((int)random() % 5 + 1 == 1) get_element(i, j)->update_element(gLib::Obstacle);
+            if((int)random() % 3 + 1 == 1) get_element(i, j)->update_element(gLib::Obstacle);
         }
     }
     randomize_start();

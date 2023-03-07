@@ -11,16 +11,16 @@ namespace gLib {
         int m_x, m_y;
         Coord(int x, int y);
     public:
-        [[nodiscard]] int flatten_coord(int max_x) const;
+        [[nodiscard]] int flatten_Coord(int max_x) const;
         Coord();
     };
 
     enum Color_Id {
-        Default_color = 1, Start_Color, Destination_Color, SearchPath_Color, FoundPath_Color, Obstacle_Color
+        Default_color = 1, Start_Color, Destination_Color, FoundDestination_Color, SearchPath_Color, FoundPath_Color, Obstacle_Color
     };
 
     enum Element_Type {
-        Start, Destination, SearchPath, FoundPath, Obstacle, Empty
+        Start, Destination, FoundDestination, SearchPath, FoundPath, Obstacle, Empty
     };
 
     /*

@@ -27,30 +27,30 @@ namespace gwindow {
         /*
          * Draws the board on the boardWindow
          */
-        void draw_boarder();
+        void draw_Boarder();
 
         /*
          * Draws the grid of elements
          */
-        void draw_grid();
+        void draw_Grid();
 
         /*
          * Makes each window
          */
-        void make_windows();
+        void make_Windows();
 
         /*
          * define the colors to be used by ncurses
          */
-        static void define_colors();
+        static void define_Colors();
 
     public:
         /*
         * Displays the grid for the user
         */
-        void display_grid(Grid::GridData* grid, graph::Graph* graph);
+        void display_Grid(Grid::GridData* grid, graph::Graph* graph);
 
-        void get_maxyx(int& y_max, int& x_max);
+        void get_Maxyx(int& y_max, int& x_max);
     };
 }
 

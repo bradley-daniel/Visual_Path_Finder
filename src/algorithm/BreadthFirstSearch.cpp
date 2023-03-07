@@ -26,19 +26,20 @@ namespace graph::algorithm {
             searching_for_path = false;
             return;
         }
-        GraphNode* crawl = destination;
+
         std::list<GraphNode*> path;
-        path.push_back(crawl);
+        GraphNode* crawl = destination;
         while(BFS.m_predecessor.at(BFS.m_graph->get_Vector_Pos(crawl)) != nullptr) {
-            path.push_back(BFS.m_predecessor.at(BFS.m_graph->get_Vector_Pos(crawl)));
+            if(crawl->m_grid_element->m_element_type == gLib::SearchPath) {
+                path.emplace_front(crawl);
+            }
             crawl = BFS.m_predecessor.at(BFS.m_graph->get_Vector_Pos(crawl));
         }
         for(GraphNode* node : path) {
-            if(node->m_grid_element->m_element_type == gLib::SearchPath) {
-                std::this_thread::sleep_for(std::chrono::milliseconds(50));
-                node->m_grid_element->update_element(gLib::FoundPath);
-            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            node->m_grid_element->update_element(gLib::FoundPath);
         }
+        destination->m_grid_element->update_element(gLib::FoundDestination);
         searching_for_path = false;
     }
 

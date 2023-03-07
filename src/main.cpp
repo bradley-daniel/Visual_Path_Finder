@@ -12,7 +12,7 @@ int main() {
     int x_max, y_max;
 
     gwindow::GridWindow gridwindow = gwindow::GridWindow();
-    gridwindow.get_maxyx(y_max, x_max);
+    gridwindow.get_Maxyx(y_max, x_max);
 
     Grid::GridData grid = Grid::GridData(y_max, x_max);
 
@@ -20,7 +20,7 @@ int main() {
     graph.construct_graph(&grid);
 
 
-    gridwindow.display_grid(&grid, &graph);
+    gridwindow.display_Grid(&grid, &graph);
     return 0;
 }
 
@@ -37,7 +37,7 @@ int main() {
 //
 //    graph::Graph graph(y_max, x_max);
 //    graph.construct_graph(&grid);
-//    graph::GraphNode* node = &graph.m_vectors.at(grid.m_start.flatten_coord(grid.m_max_x));
+//    graph::GraphNode* node = &graph.m_vectors.at(grid.m_start.flatten_Coord(grid.m_max_x));
 //    auto path_finding = graph::algorithm::BreadthFirstSearch(&graph, node);
 //    path_finding.FindPath();
 //    return 0;

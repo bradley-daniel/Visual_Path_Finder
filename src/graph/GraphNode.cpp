@@ -18,7 +18,7 @@ void graph::GraphNode::add_Adjacent_Node(int new_vector_pos, Grid::GridElement* 
 
 void graph::GraphNode::add_Node_Edges(graph::Graph* graph, int y, int x, Grid::GridData* grid) {
     //vector location of current node
-    int v_node_pos = m_coords.flatten_coord(grid->m_max_x);
+    int v_node_pos = m_coords.flatten_Coord(grid->m_max_x);
 
     //vector position of the coordinate values
     int v_left_pos = v_node_pos-1;

@@ -23,6 +23,6 @@ graph::Graph::Graph(int y_max, int x_max) : m_max_y(y_max), m_max_x(x_max) {
 }
 
 int graph::Graph::get_Vector_Pos(graph::GraphNode *node) const {
-    return node->m_coords.flatten_coord(m_max_x);
+    return node->m_coords.flatten_Coord(m_max_x);
 }
 
