@@ -19,4 +19,4 @@ endforeach()
 
 #message(STATUS ${SOURCES_LIST})
 
-add_executable(${PROJECT_NAME} main.cpp ${source_files} ../main.cpp)
+add_executable(${PROJECT_NAME} main.cpp ${source_files})
