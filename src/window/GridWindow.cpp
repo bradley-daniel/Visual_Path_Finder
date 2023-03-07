@@ -17,6 +17,7 @@ gwindow::GridWindow::GridWindow() : m_boarder_window(nullptr), m_grid_window(nul
     noecho();
     curs_set(FALSE);
     refresh();
+    timeout(30);
     getmaxyx(stdscr, m_yMax_scr, m_xMax_scr);
     getbegyx(stdscr, m_yBeg_scr, m_xBeg_scr);
     make_windows();
@@ -56,22 +57,30 @@ void gwindow::GridWindow::display_grid(Grid::GridData* grid, graph::Graph* graph
     m_ptr_grid_data = grid;
     graph::GraphNode* start_node;
     char input_char = -1;
+    std::thread new_thread;
+    bool searching_for_path = false;
     refresh();
     do {
         switch (input_char) {
             case 'r': case 'R':
+                if(searching_for_path) break;
+                if(new_thread.joinable()) new_thread.join();
                 grid->randomize_grid();
                 break;
             case 'p': case 'P':
+                if(searching_for_path) break;
+                searching_for_path = true;
                 start_node = &graph->m_vectors.at(grid->m_start.flatten_coord(graph->m_max_x));
-                graph::algorithm::BreadthFirstSearch::find_Shortest_Path(graph, start_node);
+                new_thread = std::thread(graph::algorithm::BreadthFirstSearch::find_Shortest_Path, graph, start_node, std::ref(searching_for_path));
                 break;
             default:
                 break;
         }
         draw_grid();
+        wrefresh(m_grid_window);
         input_char = getch();
     } while(input_char != 'q' && input_char != 'Q');
+    new_thread.join();
     endwin();
 }
 

@@ -7,6 +7,8 @@
 #include "GridElement.h"
 #include "gLib.h"
 #include <list>
+#include <thread>
+#include <chrono>
 
 namespace graph::algorithm {
 
@@ -17,12 +19,13 @@ namespace graph::algorithm {
         m_predecessor.resize(vector_number, nullptr);
     }
 
-    void BreadthFirstSearch::find_Shortest_Path(Graph *graph, GraphNode *start_node) {
+    void BreadthFirstSearch::find_Shortest_Path(Graph *graph, GraphNode *start_node, bool& searching_for_path) {
         BreadthFirstSearch BFS(graph, start_node);
         GraphNode* destination = BFS.search_For_Destination();
-        if(destination == nullptr) return;
-
-
+        if(destination == nullptr) {
+            searching_for_path = false;
+            return;
+        }
         GraphNode* crawl = destination;
         std::list<GraphNode*> path;
         path.push_back(crawl);
@@ -32,15 +35,18 @@ namespace graph::algorithm {
         }
         for(GraphNode* node : path) {
             if(node->m_grid_element->m_element_type == gLib::SearchPath) {
+                std::this_thread::sleep_for(std::chrono::milliseconds(50));
                 node->m_grid_element->update_element(gLib::FoundPath);
             }
         }
+        searching_for_path = false;
     }
 
     GraphNode* BreadthFirstSearch::search_For_Destination() {
         m_node_queue.push_back(m_start_node);
         GraphNode* destination_node = nullptr;
         while(!m_node_queue.empty() && destination_node == nullptr) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
             destination_node = visit_Adjacent_Nodes();
         }
         return destination_node;

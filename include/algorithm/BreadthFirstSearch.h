@@ -21,7 +21,7 @@ namespace graph::algorithm {
         std::list<GraphNode*> m_node_queue;
         std::vector<GraphNode*> m_predecessor;
     public:
-        static void find_Shortest_Path(Graph* graph, GraphNode* start_node);
+        static void find_Shortest_Path(Graph* graph, GraphNode* start_node, bool& searching_for_path);
     private:
         BreadthFirstSearch(Graph* graph, GraphNode* start_node);
         GraphNode* search_For_Destination();
