@@ -17,7 +17,7 @@ int gLib::Coord::flatten_Coord(int max_x) const {
 int gLib::get_element_color(gLib::Element_Type element_type) {
     switch (element_type) {
         case Start:
-            return Start_Color;
+            return SearchingStart_Color;
         case Destination:
             return Destination_Color;
         case FoundDestination:

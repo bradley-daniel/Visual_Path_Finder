@@ -16,7 +16,7 @@ namespace gLib {
     };
 
     enum Color_Id {
-        Default_color = 1, Start_Color, Destination_Color, FoundDestination_Color, SearchPath_Color, FoundPath_Color, Obstacle_Color
+        Default_color = 1, SearchingStart_Color, Destination_Color, FoundDestination_Color, SearchPath_Color, FoundPath_Color, Obstacle_Color
     };
 
     enum Element_Type {

@@ -6,7 +6,7 @@
 #include "gLib.h"
 #include <vector>
 
-Grid::GridData::GridData(int y_max, int x_max) : m_max_x(x_max), m_max_y(y_max) {
+Grid::GridData::GridData(int y_max, int x_max) : m_width(x_max), m_height(y_max) {
     m_elements = std::make_unique<GridVector>(y_max, std::vector<GridElement>(x_max));
     construct_grid();
 }
@@ -39,8 +39,8 @@ void Grid::GridData::randomize_grid() {
 }
 
 void Grid::GridData::clear_grid() {
-    for(int i = 0; i < m_max_y; i++) {
-        for(int j = 0; j < m_max_x; j++) {
+    for(int i = 0; i < m_height; i++) {
+        for(int j = 0; j < m_width; j++) {
             add_element(i, j, gLib::Empty);
         }
     }
@@ -49,8 +49,8 @@ void Grid::GridData::clear_grid() {
 void Grid::GridData::randomize_start() {
     int x, y;
     do {
-        x = (int) random() % (m_max_x-1);
-        y = (int) random() % (m_max_y-1);
+        x = (int) random() % (m_width - 1);
+        y = (int) random() % (m_height - 1);
     } while(x == m_destination.m_x && y == m_destination.m_y);
     get_element(y, x)->update_element(gLib::Start);
     m_start = {x, y};
@@ -59,8 +59,8 @@ void Grid::GridData::randomize_start() {
 void Grid::GridData::randomize_destination() {
     int x, y;
     do {
-        x = (int) random() % (m_max_x-1);
-        y = (int) random() % (m_max_y-1);
+        x = (int) random() % (m_width - 1);
+        y = (int) random() % (m_height - 1);
     } while(x == m_start.m_x && y == m_start.m_y);
     get_element(y, x)->update_element(gLib::Destination);
     m_destination = {x, y};

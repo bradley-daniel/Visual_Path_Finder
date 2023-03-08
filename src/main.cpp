@@ -2,6 +2,7 @@
 #include "GridWindow.h"
 #include "Graph.h"
 #include "BreadthFirstSearch.h"
+#include "RecursiveDivision.h"
 #include "iostream"
 
 #include <ctime>
@@ -24,21 +25,28 @@ int main() {
     return 0;
 }
 
+//#include <thread>
+//#include <chrono>
+//int main() {
+//    //wall.m_y = begin.m_y + (int)random() % (height - 2) + 2;
+//    //0 1 2 3
+//    while(1) {
+//        int y = 0;
+//        int width = 5;
+//        y = y + (int)random() % (width) + 1;
+//        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+//        std::cout << y << '\n';
+//    }
+//}
 
+//
 //int main() {
 //    srandom(time(nullptr));
-//    int x_max = 10, y_max = 5;
+//    int x_max = 10, y_max = 10;
 //    Grid::GridData grid = Grid::GridData(y_max, x_max);
-//    while (1) {
-//        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-//        grid.randomize_grid();
-//        std::cout << "(" << grid.m_start.m_x << "," << grid.m_start.m_y << ")\n";
-//    }
 //
 //    graph::Graph graph(y_max, x_max);
 //    graph.construct_graph(&grid);
-//    graph::GraphNode* node = &graph.m_vectors.at(grid.m_start.flatten_Coord(grid.m_max_x));
-//    auto path_finding = graph::algorithm::BreadthFirstSearch(&graph, node);
-//    path_finding.FindPath();
+//    RecursiveDivision::build_maze(&grid);
 //    return 0;
 //}

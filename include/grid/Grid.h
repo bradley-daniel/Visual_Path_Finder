@@ -16,7 +16,7 @@ namespace Grid{
         std::unique_ptr<GridVector> m_elements;
 
     public:
-        int m_max_y, m_max_x;
+        int m_height, m_width;
         gLib::Coord m_destination = {-1, -1};
         gLib::Coord m_start = {-1, -1};
 

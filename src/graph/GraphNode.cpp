@@ -18,20 +18,20 @@ void graph::GraphNode::add_Adjacent_Node(int new_vector_pos, Grid::GridElement* 
 
 void graph::GraphNode::add_Node_Edges(graph::Graph* graph, int y, int x, Grid::GridData* grid) {
     //vector location of current node
-    int v_node_pos = m_coords.flatten_Coord(grid->m_max_x);
+    int v_node_pos = m_coords.flatten_Coord(grid->m_width);
 
     //vector position of the coordinate values
     int v_left_pos = v_node_pos-1;
     int v_right_pos = v_node_pos+1;
-    int v_up_pos = v_node_pos-grid->m_max_x;
-    int v_down_pos = v_node_pos+grid->m_max_x;
+    int v_up_pos = v_node_pos-grid->m_width;
+    int v_down_pos = v_node_pos+grid->m_width;
 
     //left adjacent check
     if(m_coords.m_x > 0) {
         add_Adjacent_Node(v_left_pos, grid->get_element(y, x-1) , graph);
     }
     //right adjacent check
-    if(m_coords.m_x + 1 < grid->m_max_x){
+    if(m_coords.m_x + 1 < grid->m_width){
         add_Adjacent_Node(v_right_pos, grid->get_element(y, x+1), graph);
     }
 
@@ -40,7 +40,7 @@ void graph::GraphNode::add_Node_Edges(graph::Graph* graph, int y, int x, Grid::G
         add_Adjacent_Node(v_up_pos, grid->get_element(y - 1, x), graph);
     }
     //down adjacent check
-    if(m_coords.m_y + 1 < grid->m_max_y) {
+    if(m_coords.m_y + 1 < grid->m_height) {
         add_Adjacent_Node(v_down_pos, grid->get_element(y + 1, x), graph);
     }
 

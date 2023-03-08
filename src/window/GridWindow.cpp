@@ -5,6 +5,7 @@
 #include "Grid.h"
 #include "Graph.h"
 #include "BreadthFirstSearch.h"
+#include "RecursiveDivision.h"
 #include "GridElement.h"
 #include <iostream>
 #include <thread>
@@ -63,6 +64,9 @@ void gwindow::GridWindow::display_Grid(Grid::GridData* grid, graph::Graph* graph
             case 'r': case 'R':
                 if(searching_for_path) break;
                 grid->randomize_grid();
+//                RecursiveDivision::build_maze(grid);
+//                grid->randomize_start();
+//                grid->randomize_destination();
                 break;
             case 'p': case 'P':
                 if(searching_for_path) break;
@@ -84,12 +88,13 @@ void gwindow::GridWindow::display_Grid(Grid::GridData* grid, graph::Graph* graph
 
 void gwindow::GridWindow::define_Colors() {
     init_pair(gLib::Default_color, COLOR_WHITE, -1);
-    init_pair(gLib::Start_Color, COLOR_BLACK, COLOR_WHITE);
+    init_pair(gLib::SearchingStart_Color, COLOR_BLACK, COLOR_WHITE);
     init_pair(gLib::Destination_Color, COLOR_BLACK, COLOR_YELLOW);
     init_pair(gLib::FoundDestination_Color, COLOR_BLACK, COLOR_GREEN);
     init_pair(gLib::SearchPath_Color, COLOR_CYAN, -1);
     init_pair(gLib::FoundPath_Color, COLOR_GREEN, -1);
     init_pair(gLib::Obstacle_Color, COLOR_RED, -1);
+//    init_pair(gLib::Obstacle_Color, -1, COLOR_RED);
 }
 
 void gwindow::GridWindow::get_Maxyx(int& y_max, int& x_max) {
