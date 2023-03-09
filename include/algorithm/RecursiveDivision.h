@@ -13,14 +13,22 @@ class RecursiveDivision {
 private:
     Grid::GridData* m_grid;
 public:
-    static void build_maze(Grid::GridData* grid);
+    static void build_maze(Grid::GridData* grid, bool& is_running);
+
 private:
     explicit RecursiveDivision(Grid::GridData* grid);
-    void divide(gLib::Coord begin, int height, int width, int orientation, int counter);
 
-    static void draw_Wall(Grid::GridData* grid, gLib::Coord current_wall, int wall_length, int orientation);
+    void divide(gLib::Coord begin, int height, int width, int isHorizontal);
 
-    static int get_Quasi_Random_Orientation(int height, int width);
+    static void draw_Wall(Grid::GridData* grid, gLib::Coord wall_begin, int wall_length, int isHorizontal);
+
+    static int choose_Orientation(int height, int width);
+
+    static void randomize_Start(Grid::GridData *grid, int height, int width);
+
+    static void randomize_Destination(Grid::GridData *grid, int height, int width);
+
+    gLib::Coord randomize_Wall(gLib::Coord begin, int height, int width, int isHorizontal);
 };
 
 

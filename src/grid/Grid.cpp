@@ -46,6 +46,16 @@ void Grid::GridData::clear_grid() {
     }
 }
 
+void Grid::GridData::set_start(int y, int x) {
+    m_start = {x, y};
+    get_element(y, x)->update_element(gLib::Start);
+}
+
+void Grid::GridData::set_destination(int y, int x) {
+    m_destination = {x, y};
+    get_element(y, x)->update_element(gLib::Destination);
+}
+
 void Grid::GridData::randomize_start() {
     int x, y;
     do {

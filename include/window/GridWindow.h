@@ -6,6 +6,7 @@
 
 
 #include <utility>
+#include <vector>
 #include "ncurses.h"
 #include "gLib.h"
 namespace Grid { class GridData; }

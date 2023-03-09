@@ -17,7 +17,7 @@ int gLib::Coord::flatten_Coord(int max_x) const {
 int gLib::get_element_color(gLib::Element_Type element_type) {
     switch (element_type) {
         case Start:
-            return SearchingStart_Color;
+            return Start_Color;
         case Destination:
             return Destination_Color;
         case FoundDestination:
@@ -37,15 +37,15 @@ int gLib::get_element_color(gLib::Element_Type element_type) {
 char gLib::get_element_char(Element_Type element_type) {
     switch (element_type) {
         case Obstacle:
-            return 'O';
+            return ' ';
         case Start:
             return 'S';
         case Destination: case FoundDestination:
             return 'P';
         case SearchPath:
-            return '.';
+            return '@';
         case gLib::FoundPath:
-            return 'X';
+            return ' ';
         case Empty:
             return ' ';
     }

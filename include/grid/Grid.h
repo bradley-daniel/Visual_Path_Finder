@@ -58,6 +58,9 @@ namespace Grid{
          */
         void clear_grid();
 
+        void set_start(int y, int x);
+
+        void set_destination(int y, int x);
     };
 }
 
