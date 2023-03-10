@@ -11,7 +11,7 @@ namespace gLib {
         int m_x, m_y;
         Coord(int x, int y);
     public:
-        [[nodiscard]] int flatten_Coord(int max_x) const;
+        [[nodiscard]] int flatten_Coord(int width) const;
         Coord();
     };
 

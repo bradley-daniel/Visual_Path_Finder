@@ -4,31 +4,29 @@
 #ifndef GRAPHS_GRIDWINDOW_H
 #define GRAPHS_GRIDWINDOW_H
 
-
-#include <utility>
-#include <vector>
+#define COLOR_WALL 100
+#define COLOR_SEARCH 101
+#define COLOR_FOUND 102
 #include "ncurses.h"
 #include "gLib.h"
+
 namespace Grid { class GridData; }
 namespace graph { class Graph; }
-
 
 namespace gwindow {
     class GridWindow {
     public:
     public:
         GridWindow();
-    private:
-        WINDOW *m_boarder_window;
         WINDOW *m_grid_window;
-        Grid::GridData *grid_data = nullptr;
+    private:
         int m_yMax_scr, m_xMax_scr, m_yBeg_scr, m_xBeg_scr = 0;
-        Grid::GridData* m_ptr_grid_data;
+        Grid::GridData* m_grid;
+
     private:
         /*
          * Draws the board on the boardWindow
          */
-        void draw_Boarder();
 
         /*
          * Draws the grid of elements
@@ -49,7 +47,7 @@ namespace gwindow {
         /*
         * Displays the grid for the user
         */
-        void display_Grid(Grid::GridData* grid, graph::Graph* graph);
+        void display_Grid(graph::Graph* graph);
 
         void get_Maxyx(int& y_max, int& x_max);
     };

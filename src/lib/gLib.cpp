@@ -7,9 +7,9 @@ gLib::Coord::Coord(int x, int y) : m_x(x), m_y(y) {}
 
 gLib::Coord::Coord() : m_x(-1), m_y(-1) {}
 
-int gLib::Coord::flatten_Coord(int max_x) const {
+int gLib::Coord::flatten_Coord(int width) const {
     int pos = 0;
-    pos += m_y*max_x;
+    pos += m_y * width;
     pos += m_x;
     return pos;
 }
@@ -43,7 +43,7 @@ char gLib::get_element_char(Element_Type element_type) {
         case Destination: case FoundDestination:
             return 'P';
         case SearchPath:
-            return '@';
+            return '*';
         case gLib::FoundPath:
             return ' ';
         case Empty:

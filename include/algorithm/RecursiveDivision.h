@@ -18,17 +18,17 @@ public:
 private:
     explicit RecursiveDivision(Grid::GridData* grid);
 
-    void divide(gLib::Coord begin, int height, int width, int isHorizontal);
+    void divide(gLib::Coord begin, int width, int height, int isHorizontal);
 
     static void draw_Wall(Grid::GridData* grid, gLib::Coord wall_begin, int wall_length, int isHorizontal);
 
-    static int choose_Orientation(int height, int width);
+    static int choose_Orientation(int width, int height);
 
-    static void randomize_Start(Grid::GridData *grid, int height, int width);
+    static void randomize_Start(Grid::GridData *grid);
 
-    static void randomize_Destination(Grid::GridData *grid, int height, int width);
+    static void randomize_Destination(Grid::GridData *grid);
 
-    gLib::Coord randomize_Wall(gLib::Coord begin, int height, int width, int isHorizontal);
+    gLib::Coord randomize_Wall(gLib::Coord begin, int width, int height, int isHorizontal);
 };
 
 

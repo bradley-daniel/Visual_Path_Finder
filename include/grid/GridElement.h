@@ -16,7 +16,7 @@ namespace Grid {
     public:
         GridElement();
 
-        GridElement(gLib::Element_Type element_type, int y, int x);
+        GridElement(gLib::Element_Type element_type, int x, int y);
 
         /*
          * updates the element type to a different type

@@ -14,13 +14,11 @@ namespace graph {
     class Graph;
     class GraphNode {
     public:
-        gLib::Coord m_coords;
         std::list<GraphNode*> m_adjacency_list;
         Grid::GridElement *m_grid_element = nullptr;
     public:
         GraphNode() = default;
-
-        GraphNode(int y, int x, Grid::GridElement *gridElement);
+        explicit GraphNode(Grid::GridElement *grid_element);
 
         /*
          * add the adjacent node adjacency list if the node does not exist in the graph vector add the node information to the vector
@@ -30,7 +28,7 @@ namespace graph {
         /*
          * Links any node in the direction up down left right to the adjacency list by using the current vector position of the node in the graph vector
          */
-        void add_Node_Edges(Graph *graph, int y, int x, Grid::GridData *grid);
+        void add_Node_Edges(Graph *graph, Grid::GridData *grid);
     };
 }
 

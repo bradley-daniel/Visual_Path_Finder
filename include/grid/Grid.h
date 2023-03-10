@@ -27,40 +27,26 @@ namespace Grid{
         void construct_grid();
 
     public:
-        GridData(int y_max, int x_max);
+        GridData(int x_max, int y_max);
         /*
          * Gets the element from the 2d vector of grid elements
          */
-        GridElement* get_element(int y, int x);
+        GridElement* get_element(int x, int y);
 
         /*
          * sets the element in the 2d vector to the new_gridElement
          */
-        void add_element(int y, int x, gLib::Element_Type element_type);
+        void add_element(int x, int y, gLib::Element_Type element_type);
 
-        /*
-         * Randomize the grid of elements
-         */
-        void randomize_grid();
-
-        /*
-         * Randomizes the place were the "Player" starts
-         */
-        void randomize_start();
-
-        /*
-         * Randomizes the destination
-         */
-        void randomize_destination();
 
         /*
          * clears the grid of all the elements
          */
         void clear_grid();
 
-        void set_start(int y, int x);
+        void set_start(int x, int y);
 
-        void set_destination(int y, int x);
+        void set_destination(int x, int y);
     };
 }
 

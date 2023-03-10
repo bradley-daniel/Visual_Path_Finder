@@ -4,7 +4,7 @@
 #include "GridElement.h"
 
 
-Grid::GridElement::GridElement(gLib::Element_Type element_type, int y, int x) : m_element_type(element_type), m_coords({x, y}), m_element(' ') {}
+Grid::GridElement::GridElement(gLib::Element_Type element_type, int x, int y) : m_element_type(element_type), m_coords({x, y}), m_element(' ') {}
 
 Grid::GridElement::GridElement() : m_element_type(gLib::Empty), m_element(gLib::get_element_char(gLib::Empty)){}
 

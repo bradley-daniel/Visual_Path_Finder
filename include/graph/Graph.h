@@ -16,14 +16,13 @@ namespace graph {
     class Graph {
     public:
         std::vector<GraphNode> m_vectors;
-        int m_max_x, m_max_y;
+        Grid::GridData* m_grid;
     public:
-        Graph(int y_max, int x_max);
-
+        explicit Graph(Grid::GridData* grid);
         /*
          * constructs an adjacency graph to run path finding algorithm on the data
          */
-        void construct_graph(Grid::GridData* grid);
+        void construct_Graph(Grid::GridData* grid);
 
         int get_Vector_Pos(GraphNode* node) const;
 

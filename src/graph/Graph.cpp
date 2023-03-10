@@ -6,23 +6,19 @@
 #include "Grid.h"
 #include "glob.h"
 
-void graph::Graph::construct_graph(Grid::GridData *grid) {
+void graph::Graph::construct_Graph(Grid::GridData *grid) {
     //insets the first graph position into the vector so the others can fill
-    m_vectors.at(0) = {0, 0 , grid->get_element(0, 0)};
-    int node_counter = 0;
-    for(int i = 0; i < m_max_y; i++) {
-        for(int j = 0; j < m_max_x; j++) {
-            m_vectors.at(node_counter).add_Node_Edges(this, i, j, grid);
-            node_counter++;
-        }
+    m_vectors.at(0) = GraphNode(grid->get_element(0, 0));
+    for(auto& vector : m_vectors) {
+        vector.add_Node_Edges(this,  grid);
     }
 }
 
-graph::Graph::Graph(int y_max, int x_max) : m_max_y(y_max), m_max_x(x_max) {
-    m_vectors.resize(x_max * y_max);
+graph::Graph::Graph(Grid::GridData* grid) : m_grid(grid) {
+    m_vectors.resize(grid->m_width * grid->m_height);
 }
 
 int graph::Graph::get_Vector_Pos(graph::GraphNode *node) const {
-    return node->m_coords.flatten_Coord(m_max_x);
+    return node->m_grid_element->m_coords.flatten_Coord(m_grid->m_width);
 }
 
