@@ -37,7 +37,7 @@ void gwindow::GridWindow::draw_Grid() {
             color_id = gLib::get_element_color(element->m_element_type);
             wattron(m_grid_window, COLOR_PAIR(color_id));
             mvwaddch(m_grid_window, i, j, element->m_element);
-            wattroff(m_grid_window, COLOR_PAIR(color_id));
+//            wattroff(m_grid_window, COLOR_PAIR(color_id));
         }
     }
 }
@@ -66,7 +66,8 @@ void gwindow::GridWindow::display_Grid(graph::Graph* graph) {
                 if(is_algorithm_running) break;
                 is_algorithm_running = true;
                 start_node = &graph->m_vectors.at(m_grid->m_start.flatten_Coord(m_grid->m_width));
-                new_thread = std::thread(graph::algorithm::BreadthFirstSearch::find_Shortest_Path, graph, start_node, std::ref(is_algorithm_running));
+                new_thread = std::thread(graph::algorithm::BreadthFirstSearch::find_Path, graph, start_node,
+                                         std::ref(is_algorithm_running));
                 break;
             default:
                 break;

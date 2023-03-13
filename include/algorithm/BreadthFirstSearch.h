@@ -18,29 +18,35 @@ namespace graph::algorithm {
         GraphNode* m_start_node;
         std::vector<bool> m_visited;
         std::vector<unsigned> m_distance;
-        std::list<GraphNode*> m_node_queue;
         std::vector<GraphNode*> m_predecessor;
+        std::list<GraphNode*> m_adjacency_queue;
     public:
-        static void find_Shortest_Path(Graph* graph, GraphNode* start_node, bool& searching_for_path);
+        /*
+         * static method to be called when you want to find the shortest
+         */
+        static void find_Path(Graph* graph, GraphNode* start_node, bool& searching_for_path);
     private:
         BreadthFirstSearch(Graph* graph, GraphNode* start_node);
+
+        /*
+         * Searches the graph for the destination building a distance and predecessor vector from the start to the destination
+         * returns the destination if found
+         */
         GraphNode* search_For_Destination();
+        /*
+         * visits the adjacent nodes from the node que and if the node is found return the destination
+         */
         GraphNode* visit_Adjacent_Nodes();
+
+        /*
+         * constructs a shortest path from the Start -> Destination using the m_distance and m_predecessor
+         */
+        void construct_Path(GraphNode *destination);
+
+        /*
+         * checks if the node is the destination if not update the node to a path
+         */
+        bool check_Is_Destination(GraphNode *node);
     };
 }
-
-//namespace graph::algorithm {
-//    class BreadthFirstSearch {
-//    private:
-//        std::list<GraphNode*> node_queue;
-//        std::vector<bool> m_visited;
-//    private:
-//        bool visit_Adjacent_Nodes(Graph* graph, GraphNode* node);
-//    public:
-//        void run_Search(Graph* graph, GraphNode* start_node);
-//
-//    };
-//}
-
-
 #endif //GRAPHS_BREADTHFIRSTSEARCH_H
