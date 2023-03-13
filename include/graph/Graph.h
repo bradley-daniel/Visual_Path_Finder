@@ -7,22 +7,22 @@
 
 #include <list>
 #include <vector>
-#include "gLib.h"
+#include "lib.h"
 #include "GraphNode.h"
 
-namespace Grid { class GridData; }
+namespace grid { class GridData; }
 
 namespace graph {
     class Graph {
     public:
         std::vector<GraphNode> m_vectors;
-        Grid::GridData* m_grid;
+        grid::GridData* m_grid;
     public:
-        explicit Graph(Grid::GridData* grid);
+        explicit Graph(grid::GridData* grid);
         /*
          * constructs an adjacency graph to run path finding algorithm on the data
          */
-        void construct_Graph(Grid::GridData* grid);
+        void construct_Graph(grid::GridData* grid);
 
         int get_Vector_Pos(GraphNode* node) const;
 

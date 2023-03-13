@@ -1,20 +1,9 @@
 //
 // Created by Bradley Daniel on 3/5/23.
 //
-#include "gLib.h"
+#include "lib.h"
 
-gLib::Coord::Coord(int x, int y) : m_x(x), m_y(y) {}
-
-gLib::Coord::Coord() : m_x(-1), m_y(-1) {}
-
-int gLib::Coord::flatten_Coord(int width) const {
-    int pos = 0;
-    pos += m_y * width;
-    pos += m_x;
-    return pos;
-}
-
-int gLib::get_element_color(gLib::Element_Type element_type) {
+int lib::get_element_color(int element_type) {
     switch (element_type) {
         case Start:
             return Start_Color;
@@ -34,7 +23,7 @@ int gLib::get_element_color(gLib::Element_Type element_type) {
     return Default_color;
 }
 
-char gLib::get_element_char(Element_Type element_type) {
+char lib::get_element_char(int element_type) {
     switch (element_type) {
         case Obstacle:
             return ' ';
@@ -44,7 +33,7 @@ char gLib::get_element_char(Element_Type element_type) {
             return 'P';
         case SearchPath:
             return '*';
-        case gLib::FoundPath:
+        case lib::FoundPath:
             return ' ';
         case Empty:
             return ' ';

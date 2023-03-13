@@ -9,7 +9,8 @@
 #include "GraphNode.h"
 #include <list>
 
-namespace graph::algorithm {
+using namespace graph;
+namespace algorithm {
     struct BreadthFirstSearch {
     public:
 

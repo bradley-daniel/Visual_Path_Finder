@@ -5,14 +5,14 @@
 #include "GraphNode.h"
 #include "Graph.h"
 #include "GridElement.h"
-#include "gLib.h"
+#include "lib.h"
 #include <list>
 #include <thread>
 #include <chrono>
 
 #include <cmath>
 
-namespace graph::algorithm {
+namespace algorithm {
     BreadthFirstSearch::BreadthFirstSearch(Graph* graph, GraphNode* start_node) : m_graph(graph), m_start_node(start_node){
         int vector_number = (int)graph->m_vectors.size();
         m_visited.resize(vector_number, false);
@@ -32,14 +32,14 @@ namespace graph::algorithm {
         std::list<GraphNode*> path;
         GraphNode* crawl = destination;
         while(m_predecessor.at(m_graph->get_Vector_Pos(crawl)) != nullptr) {
-            if(crawl->m_grid_element->m_element_type == gLib::SearchPath) {
+            if(crawl->m_grid_element->m_element_type == lib::SearchPath) {
                 path.emplace_front(crawl);
             }
             crawl = m_predecessor.at(m_graph->get_Vector_Pos(crawl));
         }
-        destination->m_grid_element->update_element(gLib::FoundDestination);
+        destination->m_grid_element->update_element(lib::FoundDestination);
         for(GraphNode* node : path) {
-            node->m_grid_element->update_element(gLib::FoundPath);
+            node->m_grid_element->update_element(lib::FoundPath);
             //animation delay
             std::this_thread::sleep_for(std::chrono::milliseconds(25));
         }
@@ -64,7 +64,7 @@ namespace graph::algorithm {
         for(auto adjacent_node : node->m_adjacency_list) {
             int adj_pos = m_graph->get_Vector_Pos(adjacent_node);
             //checks if the adjacent node is visited and continues if it is
-            if(m_visited.at(adj_pos) || adjacent_node->m_grid_element->m_element_type == gLib::Obstacle) continue;
+            if(m_visited.at(adj_pos) || adjacent_node->m_grid_element->m_element_type == lib::Obstacle) continue;
             m_visited.at(adj_pos) = true;
             m_distance.at(adj_pos) = m_distance.at(pos) + 1;
             m_predecessor.at(adj_pos) = node;
@@ -77,8 +77,8 @@ namespace graph::algorithm {
     bool BreadthFirstSearch::check_Is_Destination(GraphNode* node) {
         auto adj_element_type = node->m_grid_element->m_element_type;
         //returns true if destination is found
-        if(adj_element_type == gLib::Destination) return true;
-        node->m_grid_element->update_element(gLib::SearchPath);
+        if(adj_element_type == lib::Destination) return true;
+        node->m_grid_element->update_element(lib::SearchPath);
         m_adjacency_queue.push_back(node);
         return false;
     }

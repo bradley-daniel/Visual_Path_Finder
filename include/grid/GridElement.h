@@ -5,23 +5,22 @@
 #ifndef GRAPHS_GRIDELEMENT_H
 #define GRAPHS_GRIDELEMENT_H
 
-#include "gLib.h"
+#include "Coord.h"
 
-namespace Grid {
+namespace grid {
     struct GridElement {
     public:
         char m_element;
-        gLib::Element_Type m_element_type;
-        gLib::Coord m_coords;
+        int m_element_type;
+        Coord m_coords;
     public:
         GridElement();
 
-        GridElement(gLib::Element_Type element_type, int x, int y);
-
+        GridElement(int element_type, int x, int y);
         /*
          * updates the element type to a different type
          */
-        void update_element(gLib::Element_Type new_element_type);
+        void update_element(int new_element_type);
     };
 }
 

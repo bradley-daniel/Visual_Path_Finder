@@ -6,30 +6,33 @@
 #define VISUAL_PATH_FINDER_RECURSIVEDIVISION_H
 
 #include "Grid.h"
+namespace algorithm {
+    enum Orientation {
+        Vertical, Horizontal
+    };
 
-enum Orientation { Vertical, Horizontal };
+    class RecursiveDivision {
+    private:
+        grid::GridData *m_grid;
+    public:
+        static void build_maze(grid::GridData *grid, bool &is_running);
 
-class RecursiveDivision {
-private:
-    Grid::GridData* m_grid;
-public:
-    static void build_maze(Grid::GridData* grid, bool& is_running);
+    private:
+        explicit RecursiveDivision(grid::GridData *grid);
 
-private:
-    explicit RecursiveDivision(Grid::GridData* grid);
+        void divide(grid::Coord begin, int width, int height, int isHorizontal);
 
-    void divide(gLib::Coord begin, int width, int height, int isHorizontal);
+        static void draw_Wall(grid::GridData *grid, grid::Coord wall_begin, int wall_length, int isHorizontal);
 
-    static void draw_Wall(Grid::GridData* grid, gLib::Coord wall_begin, int wall_length, int isHorizontal);
+        static int choose_Orientation(int width, int height);
 
-    static int choose_Orientation(int width, int height);
+        static void randomize_Start(grid::GridData *grid);
 
-    static void randomize_Start(Grid::GridData *grid);
+        static void randomize_Destination(grid::GridData *grid);
 
-    static void randomize_Destination(Grid::GridData *grid);
-
-    gLib::Coord randomize_Wall(gLib::Coord begin, int width, int height, int isHorizontal);
-};
+        grid::Coord randomize_Wall(grid::Coord begin, int width, int height, int isHorizontal);
+    };
+}
 
 
 #endif //VISUAL_PATH_FINDER_RECURSIVEDIVISION_H

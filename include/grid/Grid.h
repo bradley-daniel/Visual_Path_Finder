@@ -6,10 +6,10 @@
 
 #include <vector>
 #include <string>
-#include "gLib.h"
+#include "lib.h"
 #include "GridElement.h"
 
-namespace Grid{
+namespace grid{
     typedef std::vector<std::vector<GridElement>> GridVector;
     class GridData {
     private:
@@ -17,8 +17,8 @@ namespace Grid{
 
     public:
         int m_height, m_width;
-        gLib::Coord m_destination = {-1, -1};
-        gLib::Coord m_start = {-1, -1};
+        Coord m_destination = {-1, -1};
+        Coord m_start = {-1, -1};
 
     private:
         /*
@@ -36,7 +36,7 @@ namespace Grid{
         /*
          * sets the element in the 2d vector to the new_gridElement
          */
-        void add_element(int x, int y, gLib::Element_Type element_type);
+        void add_element(int x, int y, int element_type);
 
 
         /*

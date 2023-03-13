@@ -33,8 +33,8 @@ void gwindow::GridWindow::draw_Grid() {
     if(m_grid == nullptr) return;
     for(int i = 0; i < getmaxy(m_grid_window); i++) {
         for(int j = 0; j < getmaxx(m_grid_window); j++) {
-            const Grid::GridElement* element = m_grid->get_element(j, i);
-            color_id = gLib::get_element_color(element->m_element_type);
+            const grid::GridElement* element = m_grid->get_element(j, i);
+            color_id = lib::get_element_color(element->m_element_type);
             wattron(m_grid_window, COLOR_PAIR(color_id));
             mvwaddch(m_grid_window, i, j, element->m_element);
 //            wattroff(m_grid_window, COLOR_PAIR(color_id));
@@ -60,14 +60,13 @@ void gwindow::GridWindow::display_Grid(graph::Graph* graph) {
             case 'r': case 'R':
                 if(is_algorithm_running) break;
                 is_algorithm_running = true;
-                new_thread = std::thread(&RecursiveDivision::build_maze, m_grid, std::ref(is_algorithm_running));
+                new_thread = std::thread(&algorithm::RecursiveDivision::build_maze, m_grid, std::ref(is_algorithm_running));
                 break;
             case 'p': case 'P':
                 if(is_algorithm_running) break;
                 is_algorithm_running = true;
                 start_node = &graph->m_vectors.at(m_grid->m_start.flatten_Coord(m_grid->m_width));
-                new_thread = std::thread(graph::algorithm::BreadthFirstSearch::find_Path, graph, start_node,
-                                         std::ref(is_algorithm_running));
+                new_thread = std::thread(algorithm::BreadthFirstSearch::find_Path, graph, start_node, std::ref(is_algorithm_running));
                 break;
             default:
                 break;
@@ -83,13 +82,13 @@ void gwindow::GridWindow::define_Colors() {
     init_color(COLOR_SEARCH, 0, 600, 700);
     init_color(COLOR_FOUND, 0, 600, 0);
 
-    init_pair(gLib::Default_color, COLOR_WHITE, -1);
-    init_pair(gLib::Start_Color, COLOR_BLACK, COLOR_MAGENTA);
-    init_pair(gLib::Destination_Color, COLOR_BLACK, COLOR_YELLOW);
-    init_pair(gLib::FoundDestination_Color, COLOR_BLACK, COLOR_FOUND);
-    init_pair(gLib::SearchPath_Color, COLOR_SEARCH, -1);
-    init_pair(gLib::Obstacle_Color, -1, COLOR_WALL);
-    init_pair(gLib::FoundPath_Color, -1, COLOR_FOUND);
+    init_pair(lib::Default_color, COLOR_WHITE, -1);
+    init_pair(lib::Start_Color, COLOR_BLACK, COLOR_MAGENTA);
+    init_pair(lib::Destination_Color, COLOR_BLACK, COLOR_YELLOW);
+    init_pair(lib::FoundDestination_Color, COLOR_BLACK, COLOR_FOUND);
+    init_pair(lib::SearchPath_Color, COLOR_SEARCH, -1);
+    init_pair(lib::Obstacle_Color, -1, COLOR_WALL);
+    init_pair(lib::FoundPath_Color, -1, COLOR_FOUND);
 }
 
 void gwindow::GridWindow::get_Maxyx(int& y_max, int& x_max) {

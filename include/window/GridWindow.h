@@ -8,9 +8,9 @@
 #define COLOR_SEARCH 101
 #define COLOR_FOUND 102
 #include "ncurses.h"
-#include "gLib.h"
+#include "lib.h"
 
-namespace Grid { class GridData; }
+namespace grid { class GridData; }
 namespace graph { class Graph; }
 
 namespace gwindow {
@@ -21,7 +21,7 @@ namespace gwindow {
         WINDOW *m_grid_window;
     private:
         int m_yMax_scr, m_xMax_scr, m_yBeg_scr, m_xBeg_scr = 0;
-        Grid::GridData* m_grid;
+        grid::GridData* m_grid;
 
     private:
         /*

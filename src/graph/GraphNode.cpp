@@ -6,9 +6,9 @@
 #include "Grid.h"
 #include "GridElement.h"
 
-graph::GraphNode::GraphNode(Grid::GridElement* grid_element) : m_grid_element(grid_element) {}
+graph::GraphNode::GraphNode(grid::GridElement* grid_element) : m_grid_element(grid_element) {}
 
-void graph::GraphNode::add_Adjacent_Node(int new_vector_pos, Grid::GridElement* grid_element, graph::Graph *graph) {
+void graph::GraphNode::add_Adjacent_Node(int new_vector_pos, grid::GridElement* grid_element, graph::Graph *graph) {
     if(graph->m_vectors.at(new_vector_pos).m_grid_element == nullptr) {
         graph->m_vectors.at(new_vector_pos) = GraphNode(grid_element);
     }
@@ -16,7 +16,7 @@ void graph::GraphNode::add_Adjacent_Node(int new_vector_pos, Grid::GridElement* 
 }
 
 
-void graph::GraphNode::add_Node_Edges(graph::Graph* graph, Grid::GridData* grid) {
+void graph::GraphNode::add_Node_Edges(graph::Graph* graph, grid::GridData* grid) {
     //vector location of current node
     int x = m_grid_element->m_coords.m_x, y = m_grid_element->m_coords.m_y;
     int v_node_pos = m_grid_element->m_coords.flatten_Coord(grid->m_width);
