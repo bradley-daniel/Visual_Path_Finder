@@ -3,12 +3,6 @@
 #include "Graph.h"
 #include <iostream>
 
-
-struct test {
-    std::list<int*> test_1;
-    int* t;
-};
-
 int main() {
     srandom(time(nullptr));
     int x_max = 15, y_max = 10;
