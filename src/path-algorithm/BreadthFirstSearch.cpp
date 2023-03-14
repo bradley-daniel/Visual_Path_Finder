@@ -10,8 +10,6 @@
 #include <thread>
 #include <chrono>
 
-#include <cmath>
-
 namespace algorithm {
     BreadthFirstSearch::BreadthFirstSearch(Graph* graph, Node* start_node) : m_graph(graph), m_start_node(start_node){
         int vector_number = (int)graph->m_nodes.size();

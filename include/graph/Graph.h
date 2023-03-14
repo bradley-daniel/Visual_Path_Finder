@@ -18,9 +18,9 @@ namespace graph {
         grid::Grid* m_grid;
     private:
         /*
-         * adds vector to the vector of nodes
+         * adds node to the m_nodes vector at the vector_pos returns added node
          */
-        Node* add_node(grid::Coord coords,  int vector_pos);
+        Node* add_node(grid::Coord coords, int vector_pos);
 
         /*s
          * checks the cardinal directions for potential edges and adds them using add_node

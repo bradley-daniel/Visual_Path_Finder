@@ -25,7 +25,7 @@ namespace graph {
 
     }
 
-    Node* Graph::add_node(grid::Coord coords,  int vector_pos) {
+    Node* Graph::add_node(grid::Coord coords, int vector_pos) {
         Node* node = &m_nodes.at(vector_pos);
         if(node->m_grid_element == nullptr) {
             node->m_grid_element = m_grid->get_element(coords.m_x, coords.m_y);
@@ -42,25 +42,25 @@ namespace graph {
         //left adjacent check
         if (x > 0) {
             new_pos = current_pos - 1;
-            current_node->add_Adjacent_Node(add_node({x-1, y}, new_pos));
+            current_node->add_Adjacent_Node(add_node({x - 1, y}, new_pos));
 
         }
 
         //right adjacent check
         if (x + 1 < m_grid->m_width) {
             new_pos = current_pos + 1;
-            current_node->add_Adjacent_Node(add_node({x+1, y}, new_pos));
+            current_node->add_Adjacent_Node(add_node({x + 1, y}, new_pos));
         }
 
         //up adjacent check
         if (y > 0) {
             new_pos = current_pos - m_grid->m_width;
-            current_node->add_Adjacent_Node(add_node({x, y-1}, new_pos));
+            current_node->add_Adjacent_Node(add_node({x, y - 1}, new_pos));
         }
         //down adjacent check
         if (y + 1 < m_grid->m_height) {
             new_pos = current_pos + m_grid->m_width;
-            current_node->add_Adjacent_Node(add_node({x, y+1}, new_pos));
+            current_node->add_Adjacent_Node(add_node({x, y + 1}, new_pos));
         }
 
     }
