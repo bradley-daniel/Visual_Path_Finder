@@ -5,9 +5,5 @@
 
 
 namespace algorithm {
-    void algorithm::MazeAlgorithm::build_maze(grid::Grid* grid, bool& is_running) {
-        is_running = false;
-    }
-
     algorithm::MazeAlgorithm::MazeAlgorithm(grid::Grid *grid) : m_grid(grid){}
 }

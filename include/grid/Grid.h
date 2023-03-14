@@ -25,7 +25,7 @@ namespace grid{
         void construct_grid();
 
     public:
-        Grid(int x_max, int y_max);
+        Grid(int width, int height);
         /*
          * Gets the element from the 2d vector of grid elements
          */

@@ -7,8 +7,8 @@
 #include <vector>
 
 namespace grid {
-    Grid::Grid(int x_max, int y_max) : m_width(x_max), m_height(y_max) {
-        m_elements = std::make_unique<GridVector>(y_max, std::vector<GridElement>(x_max));
+    Grid::Grid(int width, int height) : m_width(width), m_height(height) {
+        m_elements = std::make_unique<GridVector>(height, std::vector<GridElement>(width));
         construct_grid();
     }
 

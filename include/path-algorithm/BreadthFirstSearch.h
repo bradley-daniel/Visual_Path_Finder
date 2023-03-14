@@ -13,11 +13,7 @@
 using namespace graph;
 namespace algorithm {
     class BreadthFirstSearch : public PathAlgorithm{
-    public:
-
     private:
-        Graph* m_graph;
-        Node* m_start_node;
         std::vector<bool> m_visited;
         std::vector<unsigned> m_distance;
         std::vector<Node*> m_predecessor;

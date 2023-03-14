@@ -14,8 +14,6 @@ namespace algorithm {
     };
 
     class RecursiveDivision : public MazeAlgorithm {
-    private:
-        grid::Grid *m_grid;
     public:
         /*
          * Build maze using Recursive Division

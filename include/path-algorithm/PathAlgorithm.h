@@ -10,7 +10,7 @@ namespace graph { class Graph; class Node; }
 
 namespace algorithm {
     class PathAlgorithm {
-    private:
+    protected:
         graph::Graph* m_graph;
         graph::Node* m_start_node;
     public:
