@@ -1,9 +1,9 @@
 //
 // Created by Bradley Daniel on 3/5/23.
 //
-#include "lib.h"
+#include "glib.h"
 
-int lib::get_element_color(int element_type) {
+int glib::get_element_color(int element_type) {
     switch (element_type) {
         case Start:
             return Start_Color;
@@ -23,7 +23,7 @@ int lib::get_element_color(int element_type) {
     return Default_color;
 }
 
-char lib::get_element_char(int element_type) {
+char glib::get_element_char(int element_type) {
     switch (element_type) {
         case Obstacle:
             return ' ';
@@ -33,7 +33,7 @@ char lib::get_element_char(int element_type) {
             return 'P';
         case SearchPath:
             return '*';
-        case lib::FoundPath:
+        case glib::FoundPath:
             return ' ';
         case Empty:
             return ' ';

@@ -7,7 +7,7 @@
 
 #include <list>
 #include <vector>
-#include "lib.h"
+#include "glib.h"
 #include "Node.h"
 
 namespace grid { class Grid; class Coord; }

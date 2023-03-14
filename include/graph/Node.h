@@ -5,7 +5,7 @@
 #ifndef GRAPHS_GRAPHNODE_H
 #define GRAPHS_GRAPHNODE_H
 
-#include "lib.h"
+#include "glib.h"
 #include <list>
 
 namespace grid { class GridElement; class Grid; }

@@ -1,0 +1,22 @@
+//
+// Created by Bradley Daniel on 3/14/23.
+//
+
+#ifndef VISUAL_PATH_FINDER_MAZEALGORITHM_H
+#define VISUAL_PATH_FINDER_MAZEALGORITHM_H
+
+namespace grid { class Grid; }
+
+namespace algorithm {
+    class MazeAlgorithm {
+    private:
+        grid::Grid* m_grid;
+    public:
+        explicit MazeAlgorithm(grid::Grid *grid);
+    private:
+        static void build_maze(grid::Grid* grid, bool& is_running);
+    };
+}
+
+
+#endif //VISUAL_PATH_FINDER_MAZEALGORITHM_H

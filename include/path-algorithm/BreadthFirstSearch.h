@@ -5,13 +5,14 @@
 #ifndef GRAPHS_BREADTHFIRSTSEARCH_H
 #define GRAPHS_BREADTHFIRSTSEARCH_H
 
+#include "PathAlgorithm.h"
 #include "Graph.h"
 #include "Node.h"
 #include <list>
 
 using namespace graph;
 namespace algorithm {
-    struct BreadthFirstSearch {
+    class BreadthFirstSearch : public PathAlgorithm{
     public:
 
     private:

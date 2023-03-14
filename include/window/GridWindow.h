@@ -8,7 +8,7 @@
 #define COLOR_SEARCH 101
 #define COLOR_FOUND 102
 #include "ncurses.h"
-#include "lib.h"
+#include "glib.h"
 
 namespace grid { class Grid; }
 namespace graph { class Graph; }

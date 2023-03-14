@@ -5,7 +5,7 @@
 #ifndef GRAPHS_GLIB_H
 #define GRAPHS_GLIB_H
 
-namespace lib {
+namespace glib {
     enum Color_Id {
         Default_color = 1, Start_Color, Destination_Color, FoundDestination_Color, SearchPath_Color, FoundPath_Color, Obstacle_Color
     };

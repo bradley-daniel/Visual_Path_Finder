@@ -6,12 +6,14 @@
 #define VISUAL_PATH_FINDER_RECURSIVEDIVISION_H
 
 #include "Grid.h"
+#include "MazeAlgorithm.h"
+
 namespace algorithm {
     enum Orientation {
         Vertical, Horizontal
     };
 
-    class RecursiveDivision {
+    class RecursiveDivision : public MazeAlgorithm {
     private:
         grid::Grid *m_grid;
     public:
@@ -31,7 +33,7 @@ namespace algorithm {
         /*
          * Draw wall from the wall_begins that is the length of wall_length
          */
-        static void draw_Wall(grid::Grid *grid, grid::Coord wall_begin, int wall_length, int isHorizontal);
+        void draw_Wall(grid::Coord wall_begin, int wall_length, int isHorizontal);
 
         /*
          * Choose a orientation if width > height Horizontal else if height > width Vertical else random

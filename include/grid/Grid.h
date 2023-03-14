@@ -6,7 +6,7 @@
 
 #include <vector>
 #include <string>
-#include "lib.h"
+#include "glib.h"
 #include "GridElement.h"
 
 namespace grid{
@@ -14,12 +14,10 @@ namespace grid{
     class Grid {
     private:
         std::unique_ptr<GridVector> m_elements;
-
     public:
         int m_height, m_width;
         Coord m_destination = {-1, -1};
         Coord m_start = {-1, -1};
-
     private:
         /*
          * constructs the grid by giving each grid position the correct x and y and element_type

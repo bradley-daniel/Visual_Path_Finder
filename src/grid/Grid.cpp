@@ -3,7 +3,7 @@
 //
 #include "Grid.h"
 #include "GridElement.h"
-#include "lib.h"
+#include "glib.h"
 #include <vector>
 
 namespace grid {
@@ -23,7 +23,7 @@ namespace grid {
     void Grid::construct_grid() {
         for (int i = 0; i < m_elements->size(); i++) {
             for (int j = 0; j < m_elements->at(i).size(); j++) {
-                add_element(j, i, lib::Empty);
+                add_element(j, i, glib::Empty);
             }
         }
     }
@@ -31,18 +31,18 @@ namespace grid {
     void Grid::clear_grid() {
         for (int i = 0; i < m_height; i++) {
             for (int j = 0; j < m_width; j++) {
-                add_element(j, i, lib::Empty);
+                add_element(j, i, glib::Empty);
             }
         }
     }
 
     void Grid::set_start(int x, int y) {
         m_start = {x, y};
-        get_element(x, y)->update_element(lib::Start);
+        get_element(x, y)->update_element(glib::Start);
     }
 
     void Grid::set_destination(int x, int y) {
         m_destination = {x, y};
-        get_element(x, y)->update_element(lib::Destination);
+        get_element(x, y)->update_element(glib::Destination);
     }
 }

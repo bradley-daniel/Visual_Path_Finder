@@ -4,25 +4,25 @@
 
 #include "RecursiveDivision.h"
 #include "Grid.h"
-#include <lib.h>
+#include <glib.h>
 #include <thread>
 #include <chrono>
 
 using namespace grid;
 namespace algorithm {
 
-    RecursiveDivision::RecursiveDivision(grid::Grid *grid) : m_grid(grid) {}
+    RecursiveDivision::RecursiveDivision(grid::Grid *grid) : MazeAlgorithm(grid) {}
 
     void RecursiveDivision::build_maze(grid::Grid *grid, bool &is_running) {
         grid->clear_grid();
         RecursiveDivision RD(grid);
         int h = grid->m_height, w = grid->m_width;
         if (w % 2 == 0) {
-            draw_Wall(grid, {grid->m_width - 1, 0}, grid->m_height, Vertical);
+            RD.draw_Wall({grid->m_width - 1, 0}, grid->m_height, Vertical);
             w = w - 1;
         }
         if (h % 2 == 0) {
-            draw_Wall(grid, {0, grid->m_height - 1}, grid->m_width, Horizontal);
+            RD.draw_Wall({0, grid->m_height - 1}, grid->m_width, Horizontal);
             h = h - 1;
         }
         RD.divide({0, 0}, w, h, choose_Orientation(w, h));
@@ -49,7 +49,6 @@ namespace algorithm {
         } while (x == grid->m_start.m_x && y == grid->m_start.m_x);
         grid->set_destination(x, y);
     }
-
     void RecursiveDivision::divide(Coord begin, int width, int height, int isHorizontal) {
         if (width < 2 || height < 2) return;
         Coord wall_begin = randomize_Wall(begin, width, height, isHorizontal);
@@ -57,26 +56,23 @@ namespace algorithm {
         w = isHorizontal ? width : (wall_begin.m_x - begin.m_x);
         h = isHorizontal ? (wall_begin.m_y - begin.m_y) : height;
         divide({begin.m_x, begin.m_y}, w, h, choose_Orientation(w, h));
-
         b_x = isHorizontal ? begin.m_x : (wall_begin.m_x + 1);
         b_y = isHorizontal ? (wall_begin.m_y + 1) : begin.m_y;
         w = isHorizontal ? width : (begin.m_x + width - wall_begin.m_x - 1);
         h = isHorizontal ? (begin.m_y + height - wall_begin.m_y - 1) : height;
         divide({b_x, b_y}, w, h, choose_Orientation(w, h));
     }
-
+    //218657
     Coord RecursiveDivision::randomize_Wall(Coord begin, int width, int height, int isHorizontal) {
         Coord wall_begin;
         Coord wall_gap;
-
         int true_height = (height - 1) / 2, true_width = (width - 1) / 2;
         wall_begin.m_x = begin.m_x + (int) (isHorizontal ? 0 : 2 * (random() % (true_width)) + 1);
         wall_begin.m_y = begin.m_y + (int) (isHorizontal ? 2 * (random() % (true_height)) + 1 : 0);
-
         wall_gap.m_x = wall_begin.m_x + (int) (isHorizontal ? 2 * (random() % true_width) : 0);
         wall_gap.m_y = wall_begin.m_y + (int) (isHorizontal ? 0 : 2 * (random() % true_height));
-        draw_Wall(m_grid, wall_begin, isHorizontal ? width : height, isHorizontal);
-        m_grid->get_element(wall_gap.m_x, wall_gap.m_y)->update_element(lib::Empty);
+        draw_Wall(wall_begin, isHorizontal ? width : height, isHorizontal);
+        m_grid->get_element(wall_gap.m_x, wall_gap.m_y)->update_element(glib::Empty);
         return wall_begin;
     }
 
@@ -86,11 +82,11 @@ namespace algorithm {
         return (int) random() % 2;
     }
 
-    void RecursiveDivision::draw_Wall(grid::Grid *grid, Coord wall_begin, int wall_length, int isHorizontal) {
+    void RecursiveDivision::draw_Wall(Coord wall_begin, int wall_length, int isHorizontal) {
         int x = wall_begin.m_x, y = wall_begin.m_y;
         for (int i = 0; i < wall_length; i++) {
             std::this_thread::sleep_for(std::chrono::microseconds(500));
-            grid->get_element(x, y)->update_element(lib::Obstacle);
+            m_grid->get_element(x, y)->update_element(glib::Obstacle);
             isHorizontal ? x += 1 : y += 1;
         }
     }

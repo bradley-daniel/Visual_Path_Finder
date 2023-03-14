@@ -34,7 +34,7 @@ void gwindow::GridWindow::draw_Grid() {
     for(int i = 0; i < getmaxy(m_grid_window); i++) {
         for(int j = 0; j < getmaxx(m_grid_window); j++) {
             const grid::GridElement* element = m_grid->get_element(j, i);
-            color_id = lib::get_element_color(element->m_element_type);
+            color_id = glib::get_element_color(element->m_element_type);
             wattron(m_grid_window, COLOR_PAIR(color_id));
             mvwaddch(m_grid_window, i, j, element->m_element);
 //            wattroff(m_grid_window, COLOR_PAIR(color_id));
@@ -47,7 +47,7 @@ void gwindow::GridWindow::make_Windows() {
 }
 
 void gwindow::GridWindow::display_Grid(graph::Graph* graph) {
-    this->m_grid = graph->m_grid;
+    m_grid = graph->m_grid;
     graph::Node* start_node;
     char input_char = -1;
     std::thread new_thread;
@@ -85,13 +85,13 @@ void gwindow::GridWindow::define_Colors() {
     init_color(COLOR_SEARCH, 0, 650, 750);
     init_color(COLOR_FOUND, 0, 750, 0);
 
-    init_pair(lib::Default_color, COLOR_WHITE, -1);
-    init_pair(lib::Start_Color, COLOR_BLACK, COLOR_MAGENTA);
-    init_pair(lib::Destination_Color, COLOR_BLACK, COLOR_YELLOW);
-    init_pair(lib::FoundDestination_Color, COLOR_BLACK, COLOR_FOUND);
-    init_pair(lib::SearchPath_Color, COLOR_SEARCH, -1);
-    init_pair(lib::Obstacle_Color, -1, COLOR_WALL);
-    init_pair(lib::FoundPath_Color, -1, COLOR_FOUND);
+    init_pair(glib::Default_color, COLOR_WHITE, -1);
+    init_pair(glib::Start_Color, COLOR_BLACK, COLOR_MAGENTA);
+    init_pair(glib::Destination_Color, COLOR_BLACK, COLOR_YELLOW);
+    init_pair(glib::FoundDestination_Color, COLOR_BLACK, COLOR_FOUND);
+    init_pair(glib::SearchPath_Color, COLOR_SEARCH, -1);
+    init_pair(glib::Obstacle_Color, -1, COLOR_WALL);
+    init_pair(glib::FoundPath_Color, -1, COLOR_FOUND);
 }
 
 void gwindow::GridWindow::get_Maxyx(int& y_max, int& x_max) {
