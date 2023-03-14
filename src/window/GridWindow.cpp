@@ -37,7 +37,6 @@ void gwindow::GridWindow::draw_Grid() {
             color_id = glib::get_element_color(element->m_element_type);
             wattron(m_grid_window, COLOR_PAIR(color_id));
             mvwaddch(m_grid_window, i, j, element->m_element);
-//            wattroff(m_grid_window, COLOR_PAIR(color_id));
         }
     }
 }
@@ -94,6 +93,6 @@ void gwindow::GridWindow::define_Colors() {
     init_pair(glib::FoundPath_Color, -1, COLOR_FOUND);
 }
 
-void gwindow::GridWindow::get_Maxyx(int& y_max, int& x_max) {
-    getmaxyx(m_grid_window, y_max, x_max);
+void gwindow::GridWindow::get_terminal_size(int& width, int& height) const {
+    getmaxyx(m_grid_window, height, width);
 }

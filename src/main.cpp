@@ -1,16 +1,33 @@
 #include "Grid.h"
 #include "GridWindow.h"
 #include "Graph.h"
+
+
+
+#include "PathAlgorithm.h"
+#include "BreadthFirstSearch.h"
+#include "RecursiveDivision.h"
 #include <iostream>
 
 int main() {
     srandom(time(nullptr));
-    int x_max = 0, y_max = 0;
+    int width = 15, height = 10;
     gwindow::GridWindow gridwindow = gwindow::GridWindow();
-    gridwindow.get_Maxyx(y_max, x_max);
-    grid::Grid grid = grid::Grid(x_max, y_max);
+    gridwindow.get_terminal_size(width, height);
+    grid::Grid grid = grid::Grid(width, height);
     graph::Graph graph(&grid);
     graph.construct_Graph(&grid);
     gridwindow.display_Grid(&graph);
+
     return 0;
 }
+
+//int main() {
+//    int width = 15, height = 10;
+//    grid::Grid grid = grid::Grid(width, height);
+//    graph::Graph graph(&grid);
+//    graph.construct_Graph(&grid);
+//    bool t = true;
+//    algorithm::RecursiveDivision::build_maze(&grid, t);
+//    algorithm::BreadthFirstSearch::find_Path(&graph, &graph.m_nodes.at(grid.m_start.flatten_Coord(width)), t);
+//}

@@ -49,7 +49,8 @@ namespace gwindow {
         */
         void display_Grid(graph::Graph* graph);
 
-        void get_Maxyx(int& y_max, int& x_max);
+        void get_terminal_size(int& width, int& height) const;
+
     };
 }
 
