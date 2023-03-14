@@ -48,25 +48,28 @@ void gwindow::GridWindow::make_Windows() {
 
 void gwindow::GridWindow::display_Grid(graph::Graph* graph) {
     this->m_grid = graph->m_grid;
-    graph::GraphNode* start_node;
+    graph::Node* start_node;
     char input_char = -1;
     std::thread new_thread;
     bool is_algorithm_running = false;
+    bool path_found = true;
     do {
         if(new_thread.joinable() && !is_algorithm_running) new_thread.join();
         draw_Grid();
         wrefresh(m_grid_window);
         switch (input_char) {
             case 'r': case 'R':
-                if(is_algorithm_running) break;
+                if(new_thread.joinable() || !path_found) break;
                 is_algorithm_running = true;
                 new_thread = std::thread(&algorithm::RecursiveDivision::build_maze, m_grid, std::ref(is_algorithm_running));
+                path_found = false;
                 break;
             case 'p': case 'P':
-                if(is_algorithm_running) break;
+                if(new_thread.joinable() || path_found) break;
                 is_algorithm_running = true;
-                start_node = &graph->m_vectors.at(m_grid->m_start.flatten_Coord(m_grid->m_width));
+                start_node = &graph->m_nodes.at(m_grid->m_start.flatten_Coord(m_grid->m_width));
                 new_thread = std::thread(algorithm::BreadthFirstSearch::find_Path, graph, start_node, std::ref(is_algorithm_running));
+                path_found = true;
                 break;
             default:
                 break;
@@ -79,8 +82,8 @@ void gwindow::GridWindow::display_Grid(graph::Graph* graph) {
 
 void gwindow::GridWindow::define_Colors() {
     init_color(COLOR_WALL, 500, 500, 500);
-    init_color(COLOR_SEARCH, 0, 600, 700);
-    init_color(COLOR_FOUND, 0, 600, 0);
+    init_color(COLOR_SEARCH, 0, 650, 750);
+    init_color(COLOR_FOUND, 0, 750, 0);
 
     init_pair(lib::Default_color, COLOR_WHITE, -1);
     init_pair(lib::Start_Color, COLOR_BLACK, COLOR_MAGENTA);

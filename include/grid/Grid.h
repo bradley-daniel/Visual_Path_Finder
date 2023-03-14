@@ -11,7 +11,7 @@
 
 namespace grid{
     typedef std::vector<std::vector<GridElement>> GridVector;
-    class GridData {
+    class Grid {
     private:
         std::unique_ptr<GridVector> m_elements;
 
@@ -27,7 +27,7 @@ namespace grid{
         void construct_grid();
 
     public:
-        GridData(int x_max, int y_max);
+        Grid(int x_max, int y_max);
         /*
          * Gets the element from the 2d vector of grid elements
          */

@@ -10,7 +10,7 @@
 #include "ncurses.h"
 #include "lib.h"
 
-namespace grid { class GridData; }
+namespace grid { class Grid; }
 namespace graph { class Graph; }
 
 namespace gwindow {
@@ -21,7 +21,7 @@ namespace gwindow {
         WINDOW *m_grid_window;
     private:
         int m_yMax_scr, m_xMax_scr, m_yBeg_scr, m_xBeg_scr = 0;
-        grid::GridData* m_grid;
+        grid::Grid* m_grid;
 
     private:
         /*

@@ -10,7 +10,7 @@ int main() {
     gwindow::GridWindow gridwindow = gwindow::GridWindow();
     gridwindow.get_Maxyx(y_max, x_max);
 
-    grid::GridData grid = grid::GridData(x_max, y_max);
+    grid::Grid grid = grid::Grid(x_max, y_max);
     graph::Graph graph(&grid);
     graph.construct_Graph(&grid);
     gridwindow.display_Grid(&graph);

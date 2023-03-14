@@ -11,9 +11,9 @@
 using namespace grid;
 namespace algorithm {
 
-    RecursiveDivision::RecursiveDivision(grid::GridData *grid) : m_grid(grid) {}
+    RecursiveDivision::RecursiveDivision(grid::Grid *grid) : m_grid(grid) {}
 
-    void RecursiveDivision::build_maze(grid::GridData *grid, bool &is_running) {
+    void RecursiveDivision::build_maze(grid::Grid *grid, bool &is_running) {
         grid->clear_grid();
         RecursiveDivision RD(grid);
         int h = grid->m_height, w = grid->m_width;
@@ -32,7 +32,7 @@ namespace algorithm {
     }
 
 
-    void RecursiveDivision::randomize_Start(grid::GridData *grid) {
+    void RecursiveDivision::randomize_Start(grid::Grid *grid) {
         int x, y;
         do {
             x = 2 * (int) (random() % (grid->m_width / 2));
@@ -41,7 +41,7 @@ namespace algorithm {
         grid->set_start(x, y);
     }
 
-    void RecursiveDivision::randomize_Destination(grid::GridData *grid) {
+    void RecursiveDivision::randomize_Destination(grid::Grid *grid) {
         int x, y;
         do {
             x = 2 * (int) (random() % (grid->m_width / 2));
@@ -86,7 +86,7 @@ namespace algorithm {
         return (int) random() % 2;
     }
 
-    void RecursiveDivision::draw_Wall(grid::GridData *grid, Coord wall_begin, int wall_length, int isHorizontal) {
+    void RecursiveDivision::draw_Wall(grid::Grid *grid, Coord wall_begin, int wall_length, int isHorizontal) {
         int x = wall_begin.m_x, y = wall_begin.m_y;
         for (int i = 0; i < wall_length; i++) {
             std::this_thread::sleep_for(std::chrono::microseconds(500));

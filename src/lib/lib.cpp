@@ -38,4 +38,5 @@ char lib::get_element_char(int element_type) {
         case Empty:
             return ' ';
     }
+    return ' ';
 }
