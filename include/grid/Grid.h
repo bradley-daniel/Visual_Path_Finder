@@ -5,6 +5,7 @@
 #define GRAPHS_GRID_H
 
 #include <vector>
+#include <memory>
 #include <string>
 #include "glib.h"
 #include "GridElement.h"
